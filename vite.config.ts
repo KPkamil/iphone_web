@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from "vite";
 
 import react from "@vitejs/plugin-react";
@@ -5,5 +6,12 @@ import viteTsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), viteTsconfigPaths()],
+  plugins: [react(), viteTsconfigPaths(), sentryVitePlugin({
+    org: "ichi-fx",
+    project: "iphone-web"
+  })],
+
+  build: {
+    sourcemap: true
+  }
 });
